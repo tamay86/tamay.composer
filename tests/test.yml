@@ -1,0 +1,28 @@
+---
+
+- hosts: all
+  remote_user: vagrant
+  become: yes
+
+  vars:
+    php_version: php72
+    php_modules:
+      - bcmath
+      - intl
+      - curl
+      - gd
+      - ldap
+      - mbstring
+      - mysql
+      - pdo
+      - xml
+      - zip
+    php_ini_config:
+      expose_php: off
+      date.timezone: Europe/Berlin
+    php_fpm: no
+
+  roles:
+  - ../../tamay.httpd
+  - ../../tamay.php
+  - ../../tamay.composer
